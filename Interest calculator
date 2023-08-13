@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interest Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .calculator {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2>Interest Calculator</h2>
+    <form id="interestForm">
+      <label for="principal">Principal Amount:</label>
+      <input type="number" id="principal" name="principal" required><br><br>
+
+      <label for="rate">Interest Rate (%):</label>
+      <input type="number" id="rate" name="rate" required><br><br>
+
+      <label for="years">Number of Years:</label>
+      <input type="number" id="years" name="years" required><br><br>
+
+      <button type="button" onclick="calculateInterest()">Calculate</button>
+    </form>
+
+    <div id="result" style="display: none;">
+      <h3>Interest Calculation Result</h3>
+      <p id="totalInterest"></p>
+      <p id="totalAmount"></p>
+    </div>
+  </div>
+
+  <script>
+    function calculateInterest() {
+      const principal = parseFloat(document.getElementById("principal").value);
+      const rate = parseFloat(document.getElementById("rate").value);
+      const years = parseInt(document.getElementById("years").value);
+
+      const interest = (principal * rate * years) / 100;
+      const totalAmount = principal + interest;
+
+      document.getElementById("totalInterest").textContent = `Total Interest: ${interest.toFixed(2)}`;
+      document.getElementById("totalAmount").textContent = `Total Amount: ${totalAmount.toFixed(2)}`;
+
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+</body>
+</html>
